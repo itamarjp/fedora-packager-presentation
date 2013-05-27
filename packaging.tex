@@ -1,0 +1,64 @@
+\documentclass[14pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuges]{babel}
+\usetheme{Copenhagen}
+
+\title{Tutorial de Empacotamento}
+\author{Itamar Reis Peixoto - itamarjp@fedoraproject.org}
+\institute{Fedora Project}
+\date{2013}
+
+
+%% mostrar o plano no início de cada secção
+\AtBeginSection[] 
+{
+\begin{frame}<beamer>
+\frametitle{Plano}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+
+\begin{document}
+\begin{frame}
+% primeiro slide
+\maketitle
+\end{frame}
+
+\begin{frame}
+\frametitle{Plano}
+\tableofcontents
+\end{frame}
+
+
+
+\section{Pre-Requisitos}
+
+\begin{frame}
+\frametitle{Indice}
+% opcional
+
+\framesubtitle{...}
+% opcional
+% conteúdo (LATEX normal)
+\begin{itemize}
+\item escrever slides sucintos;
+\item usar um tamanho de letra grande;
+\item respirar durante a apresentação;
+\item repetir sempre as perguntas.
+\end{itemize}
+\end{frame}
+
+\section{Hello World}
+
+\section{gnu autoautotools}
+
+\section{criando o rpm}
+
+\section{submetendo o rpm para repositorio oficial}
+
+\section{Conclusão}
+
+
+\end{document}
