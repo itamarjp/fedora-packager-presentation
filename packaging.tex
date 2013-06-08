@@ -1,7 +1,12 @@
-\documentclass[14pt]{beamer}
+\documentclass{beamer}
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[portuges]{babel}
+
+\usepackage{listings}
+\usepackage{color}
+
 \usetheme{Copenhagen}
 
 \title{Tutorial de Empacotamento}
@@ -10,11 +15,35 @@
 \date{2013}
 
 
+
+\lstset{
+  language=C,                % choose the language of the code
+  numbers=left,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+}
+
+
+
+
+
+
+
+
 %% mostrar o plano no início de cada secção
 \AtBeginSection[] 
 {
 \begin{frame}<beamer>
-\frametitle{Plano}
+\frametitle{Temas Abordados}
 \tableofcontents[currentsection]
 \end{frame}
 }
@@ -27,38 +56,123 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Plano}
+\frametitle{Temas Abordados}
 \tableofcontents
 \end{frame}
 
 
 
 \section{Pre-Requisitos}
-
 \begin{frame}
-\frametitle{Indice}
-% opcional
-
-\framesubtitle{...}
-% opcional
-% conteúdo (LATEX normal)
+\frametitle{Pre-Requisitos}
+\framesubtitle{ferramentas de desenvolvimento necessarias}
 \begin{itemize}
-\item escrever slides sucintos;
-\item usar um tamanho de letra grande;
-\item respirar durante a apresentação;
-\item repetir sempre as perguntas.
+\item yum -y install gcc
+\item yum -y install automake autoconf
+\item yum -y install rpmdevtools
+\item yum -y install glibc-devel
 \end{itemize}
 \end{frame}
 
+
+
+
+
+
 \section{Hello World}
+\begin{frame}[fragile]
+\frametitle{Hello World}
+\framesubtitle{fad.c}
+\begin{lstlisting}
+#include <stdio.h>
+int main(){
+    printf("Fedora FAD SP 2013");
+    return 0;
+}
+\end{lstlisting}
+\end{frame}
+
+
+
+\section{Manual do Aplicativo}
+\begin{frame}
+\frametitle{Manual do Aplicativo}
+\framesubtitle{readme.txt}
+escrever um manual descrevendo as funcionalidades do aplicativo e salvar como
+readme.txt
+\end{frame}
+
 
 \section{gnu autoautotools}
+\begin{frame}
+\frametitle{gnu autoautotools}
+\framesubtitle{Adicionando suporte para o GNU autotools em nosso aplicativo}
+
+\begin{itemize}
+\item rodar o autoscan
+\item rodar o autoheader
+\end{itemize}
+\end{frame}
+
+
+\section{gnu autoautotools}
+\begin{frame}
+\frametitle{gnu autoautotools}
+\framesubtitle{Adicionando suporte para o GNU autotools em nosso aplicativo}
+
+
+editar o arquivo configure.ac ajustando o nome do pacote e versao-> \\
+e adicionar nele 
+AM\_INIT\_AUTOMAKE \\
+
+
+adicionar no Makefile.am ->  \\
+
+bin\_PROGRAMS =  fad \\
+fad\_SOURCES  = fad.c \\
+
+apos isto rodar autoreconf -fiv 
+
+
+\end{frame}
+
+
+
+
+
+
 
 \section{criando o rpm}
+\begin{frame}
+\frametitle{criando o rpm}
+\framesubtitle{criando o rpm}
+rpmdev-newspec fad \\
+adjustar o fad.spec 
+
+rpmbuild -ba fad.spec (compila o fad.spec e gera o rpm + srpm) \\ 
+rpmbuild -bs fad.spec (compila o fad.spec e gera apenas o srpm) \\ 
+
+
+\end{frame}
+
 
 \section{submetendo o rpm para repositorio oficial}
+\begin{frame}
+\frametitle{submetendo o rpm para repositorio oficial}
+\framesubtitle{submetendo o rpm para repositorio oficial}
+submetendo o rpm para repositorio oficial
+\end{frame}
+
 
 \section{Conclusão}
+\begin{frame}
+\frametitle{Conclusão}
+\framesubtitle{Conclusão}
+Conclusão
+\end{frame}
+
+
+
 
 
 \end{document}
