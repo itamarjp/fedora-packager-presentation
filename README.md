@@ -6,5 +6,6 @@ fedora-packager-presentation
 
 open using texmaker
 
-# yum -y install texmaker
+yum -y install texmaker texlive-babel-portuges
+
 
